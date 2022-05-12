@@ -1,0 +1,23 @@
+<app-header></app-header>
+
+<!--- DEFINIER COMPONENTE DE FILE-->
+<div class="wrapper">
+    <div class="position-relative">
+        <h3>Subir imagen</h3>
+        <input class="input-file" (change)="capturarFile($event)" type="file"> <!--Input para capturar o importar imágenes -->
+        <div class="preview-img" *ngIf="previsualizacion">
+            <button class="clear-image" type="button" (click)="clearImage()">Clear</button>
+            <img  [src]="previsualizacion" alt="">
+        </div>
+      
+        <div class="p-1">
+            <small>Se aceptan archivos imágenes de tipo .png</small>
+        </div>
+        <div class="wrapper-button" *ngIf="previsualizacion">
+            <button type="button" class="button" [disabled]="loading" (click)="subirArchivo()"> <!-- el disabled es para evitar que el usuario -->
+                {{(loading) ? 'Cargando.....' : 'Subir Archivo'}}                               <!-- le este dando clicks mientras carga y haga multiples peticiones-->
+            </button>
+        </div>
+    </div>   
+</div>
+<!-- ************** PREVIEW IMAGE*************--> 
